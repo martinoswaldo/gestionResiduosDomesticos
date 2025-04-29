@@ -1,0 +1,135 @@
+/* Estilos generales */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Contenedor del formulario centrado */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Estilos para alinear etiquetas y campos */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    text-align: left; /* Alineación izquierda para las etiquetas */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+/* Estilos para el botón */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    color: white;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.25rem;
+    text-align: left; /* Alineación izquierda para mensajes de error */
+}
+
+/* Versión para pantallas más grandes */
+@media (min-width: 768px) {
+    .form-group {
+        flex-direction: row; /* Cambia a disposición horizontal */
+        align-items: center; /* Centra verticalmente */
+    }
+    
+    .form-group label {
+        flex: 0 0 150px; /* Ancho fijo para las etiquetas */
+        text-align: right; /* Alineación derecha para pantallas grandes */
+        margin-bottom: 0;
+        padding-right: 1rem; /* Espacio entre etiqueta y campo */
+    }
+    
+    .form-control {
+        flex: 1; /* El campo ocupa el resto del espacio */
+    }
+    
+    .btn-primary {
+        margin-left: auto;  /* Centrado automático */
+        margin-right: auto; /* Centrado automático */
+        /* Eliminamos el margin-left: 150px que causaba el problema */
+    }
+}

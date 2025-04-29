@@ -1,0 +1,89 @@
+/* Estilos generales para el sistema de recolección */
+.waste-collection-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.waste-collection-title {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.waste-collection-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.waste-collection-table th {
+    background-color: #3490dc;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.waste-collection-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.waste-collection-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.waste-collection-table tr:hover {
+    background-color: #e9ecef;
+}
+
+.waste-collection-btn {
+    background-color: #38c172;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.waste-collection-btn:hover {
+    background-color: #2d995b;
+}
+
+.waste-collection-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.waste-collection-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.waste-collection-form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.waste-collection-form-group input,
+.waste-collection-form-group select {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
