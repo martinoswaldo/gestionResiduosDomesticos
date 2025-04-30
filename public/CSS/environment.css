@@ -57,3 +57,77 @@ body {
 .waste-collection-form-group {
     margin-bottom: 15px;
 }
+/* .dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #1573478e !important;
+    color: #fff !important;
+    border-radius: 6px;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+    margin-bottom: 12px;
+} */
+/* .navbar-nav .nav-item.active > .nav-link {
+    background-color: #1573478e !important;
+    color: #fff !important;
+    border-radius: 8px; 
+    padding: 6px 12px;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #1573478e !important;
+    color: #fff !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+.dropdown-item:hover {
+    background-color: #198754 !important;
+    color: #fff !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.navbar-nav .nav-item:hover {
+    background-color: #198754 !important;
+    color: #fff !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+} */
+
+.navbar-nav .nav-item > .nav-link {
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+/* Estado activo */
+.navbar-nav .nav-item.active > .nav-link,
+.navbar-nav .nav-item > .nav-link.active {
+    background-color: #1573478e !important;
+    color: #fff !important;
+}
+
+/* Estado hover */
+.navbar-nav .nav-item > .nav-link:hover {
+    background-color: #198754 !important;
+    color: #fff !important;
+}
+
+.dropdown-item:hover {
+    background-color: #198754 !important;
+    color: #fff !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}

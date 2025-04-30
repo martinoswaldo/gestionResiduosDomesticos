@@ -30,7 +30,7 @@
 
             <div class="container text-dark">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Home
+                    Inicio
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,24 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-
+                        @auth
+                            <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('home') }}">Agendar Recolección</a>
+                            </li>
+                            <li class="nav-item dropdown {{ request()->is('reports/user') ? 'active' : '' }}">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReports" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Reportes
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownReports">
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('reports.user') }}">Mis Recolecciones</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('reports.admin') }}">Reportes Globales</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -66,7 +83,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        cerrar sesión
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
