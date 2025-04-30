@@ -63,6 +63,10 @@
                                 <label for="collection_date">Fecha de recolección:</label>
                                 <input type="date" id="collection_date" name="collection_date" min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required>
                             </div>
+                            <div class="waste-collection-form-group">
+                                <label for="weight">Peso estimado (kg):</label>
+                                <input type="number" step="0.01" id="weight" name="weight" placeholder="Ej. 2.5">
+                            </div>
                             
                             <div class="waste-collection-form-group">
                                 <label for="collection-time">Hora preferida:</label>

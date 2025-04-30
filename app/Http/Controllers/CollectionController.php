@@ -61,19 +61,19 @@ class CollectionController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'type' => 'required|in:inorganico,peligroso,organicos',
             'collection_date' => [
                 'required',
                 'date',
-                'after_or_equal:' . now()->format('Y-m-d') // Use current date
+                'after_or_equal:' . now()->format('Y-m-d')
             ],
             'collection_time' => 'required',
+            'location' => 'nullable|string|max:255', // Asegúrate de incluirlo si lo estás usando
+            'weight' => 'nullable|numeric|min:0',
         ]);
-        dd($request->collection_date);
         
         $collectionDate = Carbon::parse($validated['collection_date'])->format('Y-m-d');
-        
         Collection::create([
             'user_id' => Auth::id(),
             'type' => $validated['type'],
@@ -81,6 +81,7 @@ class CollectionController extends Controller
             'scheduled_date' => $collectionDate,
             'status' => 'pendiente',
             'location' => $validated['location'] ?? '',
+            'weight' => $validated['weight'] ?? null,
         ]);
         return redirect()->route('home')->with('status', 'Recolección solicitada exitosamente.');    }
 }
