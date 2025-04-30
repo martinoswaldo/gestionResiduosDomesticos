@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-@stack('styles')
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,10 @@
 
     <!-- Cambio 1: Título de la página -->
     <title>{{ config('app.name', 'Home') }}</title>
-
+    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/environment.css') }}" rel="stylesheet">
+    @stack('styles')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -23,8 +26,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-success bg-opacity-25 shadow-sm">
+
+            <div class="container text-dark">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Home
                 </a>

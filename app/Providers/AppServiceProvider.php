@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Establecer el locale en español
+        \Carbon\Carbon::setLocale('es');
+        
+        // Establecer la zona horaria global para la aplicación
+        config(['app.timezone' => 'America/Bogota']);
     }
 }

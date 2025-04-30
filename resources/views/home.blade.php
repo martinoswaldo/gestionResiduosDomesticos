@@ -26,38 +26,47 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>2023-11-15</td>
-                                    <td>08:00 - 10:00</td>
-                                    <td>Orgánico</td>
-                                    <td><button class="waste-collection-btn">Agendar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>2023-11-16</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>Reciclable</td>
-                                    <td><button class="waste-collection-btn">Agendar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>2023-11-17</td>
-                                    <td>14:00 - 16:00</td>
-                                    <td>No reciclable</td>
-                                    <td><button class="waste-collection-btn">Agendar</button></td>
-                                </tr>
+                                @foreach ($futureSlots as $slot)
+                                    <tr>
+                                        <td>{{ $slot['date'] }}</td>
+                                        <td>{{ $slot['time'] }}</td>
+                                        <td>{{ $slot['type'] }}</td>
+                                        <td>
+                                            @php
+                                                $startTime = \Carbon\Carbon::createFromFormat('H:i', explode('-', $slot['time'])[0])
+                                                    ->setDateFrom(\Carbon\Carbon::parse($slot['date']));
+                                                $isPast = $startTime->isPast();
+                                            @endphp
+                        
+                                            <button class="waste-collection-btn" {{ $isPast ? 'disabled' : '' }}>
+                                                Agendar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
                         <h3 class="waste-collection-title">O solicita una fecha personalizada</h3>
-                        
-                        <form class="waste-collection-form">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="waste-collection-form" method="POST" action="{{ route('collections.store') }}">
+                            @csrf
                             <div class="waste-collection-form-group">
-                                <label for="collection-date">Fecha de recolección:</label>
-                                <input type="date" id="collection-date" name="collection-date" required>
+                                <label for="collection_date">Fecha de recolección:</label>
+                                <input type="date" id="collection_date" name="collection_date" min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required>
                             </div>
                             
                             <div class="waste-collection-form-group">
                                 <label for="collection-time">Hora preferida:</label>
-                                <select id="collection-time" name="collection-time" required>
+                                <select id="collection_time" name="collection_time" required>
                                     <option value="08:00-10:00">08:00 - 10:00</option>
                                     <option value="10:00-12:00">10:00 - 12:00</option>
                                     <option value="14:00-16:00">14:00 - 16:00</option>
@@ -66,19 +75,45 @@
                             </div>
                             
                             <div class="waste-collection-form-group">
-                                <label for="waste-type">Tipo de residuo:</label>
-                                <select id="waste-type" name="waste-type" required>
-                                    <option value="organic">Orgánico</option>
-                                    <option value="recyclable">Reciclable</option>
-                                    <option value="non-recyclable">No reciclable</option>
-                                    <option value="hazardous">Peligroso</option>
+                                <label for="type">Tipo de residuo:</label>
+                                <select id="type" name="type" required>
+                                    <option value="organicos">Orgánico</option>
+                                    <option value="inorganico">Inorgánico</option>
+                                    <option value="peligroso">peligroso</option>
                                 </select>
                             </div>
-                            
+                            <div class="waste-collection-form-group">
+                                <label for="location">Ubicación:</label>
+                                <input type="text" id="location" name="location" placeholder="Ej. Calle 123, Barrio Verde">
+                            </div>
                             <button type="submit" class="waste-collection-btn">Solicitar Recolección</button>
                         </form>
                     </div>
                 </div>
+                @if($collections->isNotEmpty())
+    <h3 class="waste-collection-title mt-4">Tus Recolecciones Agendadas</h3>
+
+    <table class="waste-collection-table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Tipo de Residuo</th>
+                <th>Estado</th>
+                <th>Ubicación</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($collections as $collection)
+                <tr>
+                    <td>{{ \Carbon\Carbon::parse($collection->scheduled_date)->format('Y-m-d') }}</td>
+                    <td>{{ ucfirst($collection->type) }}</td>
+                    <td>{{ ucfirst($collection->status) }}</td>
+                    <td>{{ $collection->location ?? 'N/A' }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endif
             </div>
         </div>
     </div>

@@ -1,0 +1,59 @@
+body {
+    background-color: #eaf7ea;
+    font-family: 'Nunito', sans-serif;
+}
+
+.navbar {
+    background-color: #4CAF50 !important;
+}
+
+.navbar-brand, .nav-link, .dropdown-item {
+    color: white !important;
+}
+
+.navbar .dropdown-menu {
+    background-color: #4CAF50;
+}
+
+.card {
+    border: 1px solid #c5e1c5;
+    border-radius: 10px;
+}
+
+.waste-collection-container {
+    padding: 20px;
+    background-color: #f1fff1;
+}
+
+.waste-collection-title {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.waste-collection-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.waste-collection-table th, .waste-collection-table td {
+    border: 1px solid #a5d6a7;
+    padding: 10px;
+    text-align: center;
+}
+
+.waste-collection-btn {
+    background-color: #66bb6a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.waste-collection-btn:hover {
+    background-color: #43a047;
+}
+
+.waste-collection-form-group {
+    margin-bottom: 15px;
+}

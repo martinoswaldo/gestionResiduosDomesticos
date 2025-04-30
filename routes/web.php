@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CollectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return redirect()->route('home');
 });
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [CollectionController::class, 'index'])->name('home');
+
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::resource('collections', CollectionController::class)->only(['index', 'create', 'store']);
+// });
+// Route::post('/collections', [CollectionController::class, 'store'])->name('collections.store');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [CollectionController::class, 'index'])->name('home');
+    Route::post('/collections', [CollectionController::class, 'store'])->name('collections.store');
+});
